@@ -41,7 +41,7 @@
     <tr>
       <td><b>//MQ</b></td>
       <td>Monitor quit</td>
-      <td>Stop any running monitor for the service.</td>
+      <td>Stop any running monitor for the web.service.</td>
     </tr>
   </table>
 </div></div>
@@ -406,7 +406,7 @@
 </div><h3 id="Installing_services">Installing services</h3><div class="text">
 <p>
 The safest way to manually install the service is to use the provided
-<b>service.bat</b> script. Administrator privileges are required to run this
+<b>web.service.bat</b> script. Administrator privileges are required to run this
 script. If necessary, you can use the <code>/user</code> switch to specify
 a user to use for the installation of the service.
 </p>
@@ -424,13 +424,13 @@ by clicking on the "File" menu bar). See issue <a href="https://bz.apache.org/bu
 </p>
 
 <div class="codeBox"><pre><code>Install the service named 'Tomcat8'
-C:\&gt; service.bat install</code></pre></div>
+C:\&gt; web.service.bat install</code></pre></div>
 
 <p>There is a 2nd optional parameter that lets you specify the name of the
 service, as displayed in Windows services.</p>
 
 <div class="codeBox"><pre><code>Install the service named 'MyService'
-C:\&gt; service.bat install MyService</code></pre></div>
+C:\&gt; web.service.bat install MyService</code></pre></div>
 
 <p>When installing the service with a non-default name,
 tomcat8.exe and tomcat8w.exe may be renamed to
@@ -438,7 +438,7 @@ match the chosen service name. To do this, use the <code>--rename</code>
 option.</p>
 
 <div class="codeBox"><pre><code>Install the service named 'MyService' with renaming
-C:\&gt; service.bat install MyService --rename</code></pre></div>
+C:\&gt; web.service.bat install MyService --rename</code></pre></div>
 
 <p>
 If using tomcat8.exe, you need to use the <b>//IS</b> parameter.</p>
@@ -524,24 +524,24 @@ instance to listen on. Find the line that contains
 <code>&lt;Connector port="8080" ...</code> and add an address attribute and/or
 update the port number so as to specify a unique IP/port combination.</p>
 <p>
-To install an instance, first set the CATALINA_HOME environment variable to the
-name of the Tomcat installation directory. Then create a second environment
-variable CATALINA_BASE and point this to the instance folder. Then run
-"service.bat install" command specifying a service name.</p>
+    To install an instance, first set the CATALINA_HOME environment variable to the
+    name of the Tomcat installation directory. Then create a second environment
+    variable CATALINA_BASE and point this to the instance folder. Then run
+    "web.service.bat install" command specifying a service name.</p>
 
 <div class="codeBox"><pre><code>set CATALINA_HOME=c:\tomcat_8
 set CATALINA_BASE=c:\tomcat_8\instances\instance1
-service.bat install instance1</code></pre></div>
+web.service.bat install instance1</code></pre></div>
 
 <p>
 To modify the service settings, you can run <b>tomcat8w //ES//instance1</b>.
 </p>
 <p>
-For additional instances, create additional instance folder, update the
-CATALINA_BASE environment variable, and run the "service.bat install" again.</p>
+    For additional instances, create additional instance folder, update the
+    CATALINA_BASE environment variable, and run the "web.service.bat install" again.</p>
 
 <div class="codeBox"><pre><code>set CATALINA_BASE=c:\tomcat_8\instances\instance2
-service.bat install instance2</code></pre></div>
+web.service.bat install instance2</code></pre></div>
 
 </div></div></div></div></div><footer><div id="footer">
     Copyright &copy; 1999-2023, The Apache Software Foundation

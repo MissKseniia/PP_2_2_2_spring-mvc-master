@@ -1,31 +1,29 @@
 package web.controller;
 
-import models.Car;
+import org.springframework.beans.factory.annotation.Autowired;
+import web.models.Car;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import service.CarService;
-import service.CarServiceImpl;
+import web.service.CarService;
 
 import java.util.List;
 
 @Controller
 public class CarsController {
 
+    private final CarService service;
 
-    @GetMapping(value = "/askCount")
-    public String askCount() {
-        return "askCount";
+    @Autowired
+    public CarsController(CarService service) {
+        this.service = service;
     }
 
     @GetMapping(value = "/cars")
-    public String showCars1(@RequestParam("count") Byte count, ModelMap model) {
-        if (count > 5 || count < 0) {
-            return "askCount";
-        }
-        CarService service = new CarServiceImpl();
-        List<Car> cars = service.getCars(service.makeList(), count);
+    public String showCars1(@RequestParam(value = "count", defaultValue = "5") Byte count, ModelMap model) {
+
+        List<Car> cars = service.getCertainNumberOfCars(count);
         model.addAttribute("cars", cars);
         return "cars";
     }

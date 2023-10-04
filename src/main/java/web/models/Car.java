@@ -1,8 +1,5 @@
-package models;
+package web.models;
 
-import org.springframework.stereotype.Component;
-
-@Component("carBean")
 public class Car {
 
     private String model;
